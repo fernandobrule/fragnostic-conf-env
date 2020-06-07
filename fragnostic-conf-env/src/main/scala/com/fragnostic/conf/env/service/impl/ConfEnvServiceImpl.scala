@@ -14,12 +14,11 @@ trait ConfEnvServiceImpl extends ConfEnvServiceApi {
 
   class DefaultConfEnvService extends ConfEnvServiceApi with TypesSupport with KeySupport {
 
-    override def getString(locale: Option[Locale] = None, key: String): Either[String, Option[String]] =
-      locale map (locale => {
-        Right(Option(System.getenv(compose(Some(locale), key))))
-      }) getOrElse ({
-        Right(Option(System.getenv(key)))
-      })
+    override def getString(key: String): Either[String, Option[String]] =
+      Right(Option(System.getenv(key)))
+
+    override def getString(locale: Locale, key: String): Either[String, Option[String]] =
+      Right(Option(System.getenv(compose(Some(locale), key))))
 
     override def getShort(key: String): Either[String, Option[Short]] =
       getString(key = key) fold (

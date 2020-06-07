@@ -70,7 +70,7 @@ lazy val fragnosticConf = Project(
       slf4jApi,
       scalatest,
       fragnosticI18n,
-      fragnosticConfSupport
+      fragnosticConfBase
     ) ++ specs2.map(_ % "test"),
     description := "fragnostic-conf-env"
   )

@@ -11,7 +11,9 @@ trait ConfEnvServiceApi {
 
   trait ConfEnvServiceApi {
 
-    def getString(locale: Option[Locale] = None, key: String): Either[String, Option[String]]
+    def getString(key: String): Either[String, Option[String]]
+
+    def getString(locale: Locale, key: String): Either[String, Option[String]]
 
     def getShort(key: String): Either[String, Option[Short]]
 
