@@ -8,7 +8,7 @@ class ConfEnvServiceGetLongTest extends BaseConfTest {
 
     it("Can Get Value As Long") {
 
-      val opt = CakeConfEnvService.confEnvServiceApi.getLong(key = keyEnvLong) fold (
+      val opt = CakeConfEnvService.confServiceApi.getLong(key = keyEnvLong) fold (
         error => throw new IllegalStateException(error),
         opt => opt)
 

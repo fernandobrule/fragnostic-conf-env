@@ -1,7 +1,5 @@
 package com.fragnostic.conf.env.service.impl
 
-import java.util.Locale
-
 import com.fragnostic.conf.base.service.api.ConfServiceApi
 import com.fragnostic.conf.base.service.support.{ KeySupport, TypesSupport }
 
@@ -16,9 +14,6 @@ trait ConfEnvServiceImpl extends ConfServiceApi {
 
     override def getString(key: String): Either[String, Option[String]] =
       Right(Option(System.getenv(key)))
-
-    override def getString(locale: Locale, key: String): Either[String, Option[String]] =
-      Right(Option(System.getenv(compose(Some(locale), key))))
 
     override def getShort(key: String): Either[String, Option[Short]] =
       getString(key = key) fold (
