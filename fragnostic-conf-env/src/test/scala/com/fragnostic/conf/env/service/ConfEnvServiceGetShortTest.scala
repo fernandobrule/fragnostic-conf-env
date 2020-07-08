@@ -8,7 +8,7 @@ class ConfEnvServiceGetShortTest extends BaseConfTest {
 
     it("Can Get Value As Short") {
 
-      val opt = CakeConfEnvService.confEnvServiceApi.getShort(key = keyEnvShort) fold (
+      val opt = CakeConfEnvService.confServiceApi.getShort(key = keyEnvShort) fold (
         error => throw new IllegalStateException(error),
         opt => opt)
 
