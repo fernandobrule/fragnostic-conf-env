@@ -1,24 +1,19 @@
 package com.fragnostic.conf.env.service.impl
 
-import java.util.Locale
-
-import com.fragnostic.conf.env.service.api.ConfEnvServiceApi
-import com.fragnostic.conf.service.support.{ KeySupport, TypesSupport }
+import com.fragnostic.conf.base.service.api.ConfServiceApi
+import com.fragnostic.conf.base.service.support.{ KeySupport, TypesSupport }
 
 /**
  * Configuration from Environment
  */
-trait ConfEnvServiceImpl extends ConfEnvServiceApi {
+trait ConfEnvServiceImpl extends ConfServiceApi {
 
-  def confEnvServiceApi = new DefaultConfEnvService
+  def confServiceApi = new DefaultConfEnvService
 
-  class DefaultConfEnvService extends ConfEnvServiceApi with TypesSupport with KeySupport {
+  class DefaultConfEnvService extends ConfServiceApi with TypesSupport with KeySupport {
 
     override def getString(key: String): Either[String, Option[String]] =
       Right(Option(System.getenv(key)))
-
-    override def getString(locale: Locale, key: String): Either[String, Option[String]] =
-      Right(Option(System.getenv(compose(Some(locale), key))))
 
     override def getShort(key: String): Either[String, Option[Short]] =
       getString(key = key) fold (
