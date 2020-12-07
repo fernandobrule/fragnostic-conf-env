@@ -1,4 +1,4 @@
-import com.typesafe.sbt.pgp.PgpKeys
+import com.jsuereth.sbtpgp.PgpKeys
 import scala.xml._
 import java.net.URL
 import Dependencies._
@@ -12,11 +12,11 @@ val unusedOptions = Def.setting(
   }
 )
 
-lazy val scalatraSettings = Seq(
+lazy val frgConfEnvSettings = Seq(
   organization := "com.fragnostic",
   fork in Test := true,
   baseDirectory in Test := file("."),
-  crossScalaVersions := Seq("2.12.11", "2.11.12", "2.13.1"),
+  crossScalaVersions := Seq("2.12.11", "2.11.12", "2.13.3"),
   scalaVersion := crossScalaVersions.value.head,
   scalacOptions ++= unusedOptions.value,
   scalacOptions ++= Seq(
@@ -39,14 +39,14 @@ lazy val scalatraSettings = Seq(
     "org.scala-lang" % "scala-reflect"  % scalaVersion.value,
     "org.scala-lang" % "scala-compiler" % scalaVersion.value
   )
-) ++ Seq(Compile, Test).flatMap(c =>
+) ++ mavenCentralFrouFrou ++ Seq(Compile, Test).flatMap(c =>
   scalacOptions in (c, console) --= unusedOptions.value
 )
 
-lazy val fragnosticConfProject = Project(
-  id = "fragnostic-conf-env",
+lazy val frgConfEnvProject = Project(
+  id = "fragnostic-conf-env-project",
   base = file(".")).settings(
-    scalatraSettings ++ Seq(
+    frgConfEnvSettings ++ Seq(
     name := "fragnostic conf env",
     artifacts := Classpaths.artifactDefs(Seq(packageDoc in Compile, makePom in Compile)).value,
     packagedArtifacts := Classpaths.packaged(Seq(packageDoc in Compile, makePom in Compile)).value,
@@ -57,25 +57,23 @@ lazy val fragnosticConfProject = Project(
   ) ++ Defaults.packageTaskSettings(
     packageDoc in Compile, (unidoc in Compile).map(_.flatMap(Path.allSubpaths))
   )).aggregate(
-    fragnosticConf
+    frgConfEnv
   ).enablePlugins(ScalaUnidocPlugin)
 
-
-lazy val fragnosticConf = Project(
+lazy val frgConfEnv = Project(
   id = "fragnostic-conf-env",
-  base = file("fragnostic-conf-env")).settings(
-    scalatraSettings ++ Seq(
+  base = file("fragnostic-conf-env")).settings(frgConfEnvSettings ++ Seq(
     libraryDependencies ++= Seq(
       logbackClassic,
       slf4jApi,
       scalatest,
       fragnosticI18n,
       fragnosticConfBase
-    ) ++ specs2.map(_ % "test"),
-    description := "fragnostic-conf-env"
+    ),
+    description := "fragnostic conf env"
   )
 ) dependsOn(
-  // some module
+  //
 )
 
 lazy val manifestSetting = packageOptions += {
@@ -93,5 +91,19 @@ lazy val manifestSetting = packageOptions += {
   )
 }
 
-lazy val doNotPublish = Seq(publish := {}, publishLocal := {}, PgpKeys.publishSigned := {}, PgpKeys.publishLocalSigned := {})
+// Things we care about primarily because Maven Central demands them
+lazy val mavenCentralFrouFrou = Seq(
+  homepage := Some(new URL("http://www.notyet.com.br")),
+  startYear := Some(2019),
+  pomExtra := pomExtra.value ++ Group(
+    <developers>
+      <developer>
+        <id>fbrule</id>
+        <name>Fernando Brûlé</name>
+        <url>https://github.com/fernandobrule</url>
+      </developer>
+    </developers>
+  )
+)
 
+lazy val doNotPublish = Seq(publish := {}, publishLocal := {}, PgpKeys.publishSigned := {}, PgpKeys.publishLocalSigned := {})
