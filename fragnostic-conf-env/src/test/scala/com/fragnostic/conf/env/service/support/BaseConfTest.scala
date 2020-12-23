@@ -8,13 +8,20 @@ import org.scalatest.{ FunSpec, Matchers }
 trait BaseConfTest extends FunSpec with Matchers with KeySupport {
 
   protected val keyEnv: String = "TEST_KEY_ENV"
-  protected val keyEnvShort: String = "TEST_KEY_ENV_SHORT"
-  protected val keyEnvInt: String = "TEST_KEY_ENV_INT"
-  protected val keyEnvLong: String = "TEST_KEY_ENV_LONG"
   protected val valueEnv = "yep"
+
+  protected val keyEnvShort: String = "TEST_KEY_ENV_SHORT"
   protected val valueEnvShort: Short = 123
+
+  protected val keyEnvInt: String = "TEST_KEY_ENV_INT"
   protected val valueEnvInt: Int = 456
+
+  protected val keyEnvLong: String = "TEST_KEY_ENV_LONG"
   protected val valueEnvLong: Long = 789
+
+  protected val keyEnvBoolean: String = "TEST_KEY_ENV_BOOLEAN"
+  protected val valueEnvBoolean: Boolean = true
+
   protected val valueEnvEsCl = "muchas gracias"
   protected val valueEnvEnUs = "many thanks"
   protected val valueEnvPtBr = "muito obrigado"
