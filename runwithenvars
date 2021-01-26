@@ -12,4 +12,4 @@ export TEST_KEY_ENV_en_US="many thanks"
 export TEST_KEY_ENV_pt_BR="muito obrigado"
 
 
-./sbt -v -213
+./sbt -v -213 -Dsbt.io.implicit.relative.glob.conversion=allow

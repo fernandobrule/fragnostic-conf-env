@@ -99,7 +99,7 @@ lazy val frgConfEnv = Project(
       logbackClassic,
       slf4jApi,
       scalatest,
-      fragnosticI18n,
+      fragnosticI18nImpl,
       fragnosticConfBase
     ),
     description := "fragnostic conf env"
