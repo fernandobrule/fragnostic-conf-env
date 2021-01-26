@@ -30,6 +30,11 @@ trait ConfEnvServiceImpl extends ConfServiceApi {
         error => Left(error),
         opt => toLong(opt))
 
+    override def getBoolean(key: String): Either[String, Option[Boolean]] =
+      getString(key = key) fold (
+        error => Left(error),
+        opt => toBoolean(opt))
+
   }
 
 }
