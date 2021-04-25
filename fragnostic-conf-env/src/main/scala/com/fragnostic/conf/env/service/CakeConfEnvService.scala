@@ -4,7 +4,9 @@ import com.fragnostic.conf.env.service.impl.ConfEnvServiceImpl
 
 object CakeConfEnvService {
 
-  val confServiceApi = (new ConfEnvServiceImpl {
-  }).confServiceApi
+  lazy val confEnvService = confEnvServicePiece.confServiceApi
+
+  lazy val confEnvServicePiece = new ConfEnvServiceImpl {
+  }
 
 }

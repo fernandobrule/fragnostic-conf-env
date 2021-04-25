@@ -8,7 +8,7 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
 
     it("Can Get Value As String") {
 
-      val opt = CakeConfEnvService.confServiceApi.getString(key = keyEnv) fold (
+      val opt = CakeConfEnvService.confEnvService.getString(key = keyEnv) fold (
         error => throw new IllegalStateException(error),
         opt => opt)
 
@@ -18,7 +18,7 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
 
     it("Can Get Value As String es/CL") {
 
-      val opt = CakeConfEnvService.confServiceApi.getString(compose(Some(localeEsCl), keyEnv)) fold (
+      val opt = CakeConfEnvService.confEnvService.getString(localeEsCl, keyEnv) fold (
         error => throw new IllegalStateException(error),
         opt => opt)
 
@@ -28,7 +28,7 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
 
     it("Can Get Value As String pt/BR") {
 
-      val opt = CakeConfEnvService.confServiceApi.getString(compose(Some(localePtBr), keyEnv)) fold (
+      val opt = CakeConfEnvService.confEnvService.getString(localePtBr, keyEnv) fold (
         error => throw new IllegalStateException(error),
         opt => opt)
 
@@ -38,7 +38,7 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
 
     it("Can Get Value As String en/US") {
 
-      val opt = CakeConfEnvService.confServiceApi.getString(compose(Some(localeEnUs), keyEnv)) fold (
+      val opt = CakeConfEnvService.confEnvService.getString(localeEnUs, keyEnv) fold (
         error => throw new IllegalStateException(error),
         opt => opt)
 

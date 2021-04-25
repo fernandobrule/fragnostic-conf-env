@@ -8,7 +8,7 @@ class ConfEnvServiceGetBooleanTest extends BaseConfTest {
 
     it("Can Get Value As Boolean") {
 
-      val opt = CakeConfEnvService.confServiceApi.getBoolean(key = keyEnvBoolean) fold (
+      val opt = CakeConfEnvService.confEnvService.getBoolean(key = keyEnvBoolean) fold (
         error => throw new IllegalStateException(error),
         opt => opt)
 
