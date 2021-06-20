@@ -12,7 +12,7 @@ object Dependencies {
                          "org.specs2" %% "specs2-mock",
                          "org.specs2" %% "specs2-matcher-extra").map( _ % specs2Version)
 
-  lazy val fragnosticI18nImpl = "com.fragnostic" % "fragnostic-i18n-impl_2.13" % "0.2.1"
+  lazy val fragnosticI18nImpl = "com.fragnostic" % "fragnostic-i18n-impl_2.13" % "0.2.2"
   lazy val fragnosticConfBase = "com.fragnostic" % "fragnostic-conf-base_2.13" % "0.1.5"
 
 }
