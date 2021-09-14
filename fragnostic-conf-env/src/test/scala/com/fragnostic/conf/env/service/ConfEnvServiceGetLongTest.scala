@@ -1,7 +1,5 @@
 package com.fragnostic.conf.env.service
 
-import com.fragnostic.conf.env.service.support.BaseConfTest
-
 class ConfEnvServiceGetLongTest extends BaseConfTest {
 
   describe("Conf Env Service Get Long Test") {
