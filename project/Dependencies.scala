@@ -7,7 +7,7 @@ object Dependencies {
   lazy val slf4jApi            = "org.slf4j"      % "slf4j-api"                  % "1.7.25" % "runtime"
   lazy val scalatest           = "org.scalatest" %% "scalatest"                  % "3.2.2" % "test"
 
-  lazy val fragnosticI18nImpl = "com.fragnostic" % "fragnostic-i18n-impl_2.13" % "0.2.3"
+  lazy val fragnosticI18nImpl = "com.fragnostic" % "fragnostic-i18n-impl_2.13" % "0.2.4"
   lazy val fragnosticConfBase = "com.fragnostic" % "fragnostic-conf-base_2.13" % "0.1.5"
 
 }
