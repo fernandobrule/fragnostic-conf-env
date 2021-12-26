@@ -10,8 +10,7 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
         error => throw new IllegalStateException(error),
         opt => opt)
 
-      opt should not be None
-      opt.get should be(valueEnv)
+      assertResult(opt.get)(valueEnv)
     }
 
     it("Can Get Value As String es/CL") {
@@ -20,8 +19,7 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
         error => throw new IllegalStateException(error),
         opt => opt)
 
-      opt should not be None
-      opt.get should be(valueEnvEsCl)
+      assertResult(opt.get)(valueEnvEsCl)
     }
 
     it("Can Get Value As String pt/BR") {
@@ -30,8 +28,7 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
         error => throw new IllegalStateException(error),
         opt => opt)
 
-      opt should not be None
-      opt.get should be(valueEnvPtBr)
+      assertResult(opt.get)(valueEnvPtBr)
     }
 
     it("Can Get Value As String en/US") {
@@ -40,8 +37,8 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
         error => throw new IllegalStateException(error),
         opt => opt)
 
-      opt should not be None
-      opt.get should be(valueEnvEnUs)
+      assertResult(opt.get)(valueEnvEnUs)
+
     }
 
   }

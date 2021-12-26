@@ -10,8 +10,7 @@ class ConfEnvServiceGetLongTest extends BaseConfTest {
         error => throw new IllegalStateException(error),
         opt => opt)
 
-      opt should not be None
-      opt.get should be(valueEnvLong)
+      assertResult(opt.get)(valueEnvLong)
 
     }
 

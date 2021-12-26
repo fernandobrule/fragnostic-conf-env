@@ -1,11 +1,10 @@
 package com.fragnostic.conf.env.service
 
 import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.matchers.should.Matchers
 
 import java.util.Locale
 
-trait BaseConfTest extends AnyFunSpec with Matchers {
+trait BaseConfTest extends AnyFunSpec {
 
   protected val keyEnv: String = "TEST_KEY_ENV"
   protected val valueEnv = "yep"

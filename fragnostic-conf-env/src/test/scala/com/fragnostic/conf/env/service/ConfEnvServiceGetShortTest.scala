@@ -10,8 +10,7 @@ class ConfEnvServiceGetShortTest extends BaseConfTest {
         error => throw new IllegalStateException(error),
         opt => opt)
 
-      opt should not be None
-      opt.get should be(valueEnvShort)
+      assertResult(opt.get)(valueEnvShort)
 
     }
 

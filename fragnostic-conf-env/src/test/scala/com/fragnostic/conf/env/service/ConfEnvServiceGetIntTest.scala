@@ -10,8 +10,7 @@ class ConfEnvServiceGetIntTest extends BaseConfTest {
         error => throw new IllegalStateException(error),
         opt => opt)
 
-      opt should not be None
-      opt.get should be(valueEnvInt)
+      assertResult(opt.get)(valueEnvInt)
 
     }
 
