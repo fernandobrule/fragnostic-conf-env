@@ -8,8 +8,10 @@ class ConfEnvServiceGetShortTest extends BaseConfTest {
 
       val opt = CakeConfEnvService.confEnvService.getShort(key = keyEnvShort) fold (
         error => throw new IllegalStateException(error),
-        opt => opt)
+        opt => opt //
+      )
 
+      assert(opt !== None)
       assertResult(opt.get)(valueEnvShort)
 
     }

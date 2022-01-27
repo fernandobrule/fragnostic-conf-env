@@ -35,8 +35,10 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
 
       val opt = CakeConfEnvService.confEnvService.getString(localeEnUs, keyEnv) fold (
         error => throw new IllegalStateException(error),
-        opt => opt)
+        opt => opt //
+      )
 
+      assert(opt !== None)
       assertResult(opt.get)(valueEnvEnUs)
 
     }

@@ -8,8 +8,10 @@ class ConfEnvServiceGetIntTest extends BaseConfTest {
 
       val opt = CakeConfEnvService.confEnvService.getInt(key = keyEnvInt) fold (
         error => throw new IllegalStateException(error),
-        opt => opt)
+        opt => opt //
+      )
 
+      assert(opt !== None)
       assertResult(opt.get)(valueEnvInt)
 
     }
