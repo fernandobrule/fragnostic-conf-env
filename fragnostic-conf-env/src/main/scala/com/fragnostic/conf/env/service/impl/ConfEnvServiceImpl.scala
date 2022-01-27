@@ -40,18 +40,14 @@ trait ConfEnvServiceImpl extends ConfServiceApi {
         error => Left(error),
         opt => toShort(opt) fold (
           error => Left(error),
-          newShort => Right(newShort)))
+          newShort => Right(newShort) //
+        ) //
+      )
 
     override def getInt(key: String): Either[String, Int] =
       getString(key = key) fold (
-        error => {
-          println(s">>> getInt() - error:$error")
-          Left(error)
-        },
-        opt => {
-          println(s">>> getInt() - opt:$opt")
-          toInt(opt)
-        } //
+        error => Left(error),
+        opt => toInt(opt) //
       )
 
     override def getLong(key: String): Either[String, Long] =
