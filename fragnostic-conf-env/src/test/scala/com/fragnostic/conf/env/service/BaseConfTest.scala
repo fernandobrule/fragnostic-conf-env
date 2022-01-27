@@ -6,6 +6,9 @@ import java.util.Locale
 
 trait BaseConfTest extends AnyFunSpec {
 
+  protected val keyEnvThatDoesNotExists: String = "TEST_KEY_ENV_THAT_DOES_NOT_EXISTS"
+  protected val valueEnvThatDoesNotExists: String = "conf.env.service.get.string.error.envar__TEST_KEY_ENV_THAT_DOES_NOT_EXISTS__does.not.exists"
+
   protected val keyEnv: String = "TEST_KEY_ENV"
   protected val valueEnv = "yep"
 

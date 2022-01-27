@@ -6,14 +6,22 @@ class ConfEnvServiceGetLongTest extends BaseConfTest {
 
     it("Can Get Value As Long") {
 
-      val opt = CakeConfEnvService.confEnvService.getLong(key = keyEnvLong) fold (
+      val value = CakeConfEnvService.confEnvService.getLong(key = keyEnvLong) fold (
         error => throw new IllegalStateException(error),
-        opt => opt //
+        value => value //
       )
 
-      assert(opt !== None)
-      assertResult(opt.get)(valueEnvLong)
+      assertResult(valueEnvLong)(value)
+    }
 
+    it("Can Not Get Value As Long") {
+
+      val value = CakeConfEnvService.confEnvService.getLong(key = keyEnvThatDoesNotExists) fold (
+        error => error,
+        value => value //
+      )
+
+      assertResult(valueEnvThatDoesNotExists)(value)
     }
 
   }

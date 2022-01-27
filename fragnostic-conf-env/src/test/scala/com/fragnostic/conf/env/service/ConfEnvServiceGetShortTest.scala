@@ -6,14 +6,22 @@ class ConfEnvServiceGetShortTest extends BaseConfTest {
 
     it("Can Get Value As Short") {
 
-      val opt = CakeConfEnvService.confEnvService.getShort(key = keyEnvShort) fold (
+      val value = CakeConfEnvService.confEnvService.getShort(key = keyEnvShort) fold (
         error => throw new IllegalStateException(error),
-        opt => opt //
+        value => value //
       )
 
-      assert(opt !== None)
-      assertResult(opt.get)(valueEnvShort)
+      assertResult(valueEnvShort)(value)
+    }
 
+    it("Can Not Get Value As Short") {
+
+      val value = CakeConfEnvService.confEnvService.getShort(key = keyEnvThatDoesNotExists) fold (
+        error => error,
+        value => value //
+      )
+
+      assertResult(valueEnvThatDoesNotExists)(value)
     }
 
   }

@@ -6,14 +6,22 @@ class ConfEnvServiceGetIntTest extends BaseConfTest {
 
     it("Can Get Value As Int") {
 
-      val opt = CakeConfEnvService.confEnvService.getInt(key = keyEnvInt) fold (
+      val value = CakeConfEnvService.confEnvService.getInt(key = keyEnvInt) fold (
         error => throw new IllegalStateException(error),
-        opt => opt //
+        value => value //
       )
 
-      assert(opt !== None)
-      assertResult(opt.get)(valueEnvInt)
+      assertResult(valueEnvInt)(value)
+    }
 
+    it("Can Not Get Value As Int") {
+
+      val value = CakeConfEnvService.confEnvService.getInt(key = keyEnvThatDoesNotExists) fold (
+        error => error,
+        value => value //
+      )
+
+      assertResult(valueEnvThatDoesNotExists)(value)
     }
 
   }
