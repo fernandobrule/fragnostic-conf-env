@@ -6,42 +6,53 @@ class ConfEnvServiceGetStringTest extends BaseConfTest {
 
     it("Can Get Value As String") {
 
-      val opt = CakeConfEnvService.confEnvService.getString(key = keyEnv) fold (
+      val value = CakeConfEnvService.confEnvService.getString(key = keyEnv) fold (
         error => throw new IllegalStateException(error),
-        opt => opt)
+        value => value //
+      )
 
-      opt should not be None
-      opt.get should be(valueEnv)
+      assertResult(valueEnv)(value)
+    }
+
+    it("Can Not Get Value As String") {
+
+      val value = CakeConfEnvService.confEnvService.getString(key = keyEnvThatDoesNotExists) fold (
+        error => error,
+        value => value //
+      )
+
+      assertResult(valueEnvThatDoesNotExists)(value)
     }
 
     it("Can Get Value As String es/CL") {
 
-      val opt = CakeConfEnvService.confEnvService.getString(localeEsCl, keyEnv) fold (
+      val value = CakeConfEnvService.confEnvService.getString(localeEsCl, keyEnv) fold (
         error => throw new IllegalStateException(error),
-        opt => opt)
+        value => value //
+      )
 
-      opt should not be None
-      opt.get should be(valueEnvEsCl)
+      assertResult(valueEnvEsCl)(value)
     }
 
     it("Can Get Value As String pt/BR") {
 
-      val opt = CakeConfEnvService.confEnvService.getString(localePtBr, keyEnv) fold (
+      val value = CakeConfEnvService.confEnvService.getString(localePtBr, keyEnv) fold (
         error => throw new IllegalStateException(error),
-        opt => opt)
+        value => value //
+      )
 
-      opt should not be None
-      opt.get should be(valueEnvPtBr)
+      assertResult(valueEnvPtBr)(value)
     }
 
     it("Can Get Value As String en/US") {
 
-      val opt = CakeConfEnvService.confEnvService.getString(localeEnUs, keyEnv) fold (
+      val value = CakeConfEnvService.confEnvService.getString(localeEnUs, keyEnv) fold (
         error => throw new IllegalStateException(error),
-        opt => opt)
+        value => value //
+      )
 
-      opt should not be None
-      opt.get should be(valueEnvEnUs)
+      assertResult(valueEnvEnUs)(value)
+
     }
 
   }
