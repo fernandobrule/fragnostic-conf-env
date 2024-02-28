@@ -35,7 +35,7 @@ trait ConfEnvServiceImpl extends ConfServiceApi {
     override def getString(locale: Locale, key: String): Either[String, String] =
       Right(System.getenv(compose(locale, key)))
 
-    override def getShort(key: String): Either[String, Short] =
+    override def getShort(key: String): Either[String, Short] = {
       getString(key = key) fold (
         error => Left(error),
         opt => toShort(opt) fold (
@@ -43,6 +43,17 @@ trait ConfEnvServiceImpl extends ConfServiceApi {
           newShort => Right(newShort) //
         ) //
       )
+    }
+
+    override def getBigDecimal(key: String): Either[String, BigDecimal] = {
+      getString(key = key) fold (
+        error => Left(error),
+        opt => toBigDecimal(opt) fold (
+          error => Left(error),
+          newBigDecimal => Right(newBigDecimal) //
+        ) //
+      )
+    }
 
     override def getInt(key: String): Either[String, Int] =
       getString(key = key) fold (
