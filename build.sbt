@@ -97,7 +97,7 @@ lazy val fragnosticConfEnv = Project(
   libraryDependencies ++= Seq(
     logbackClassic,
     slf4jApi,
-    scalatestFunSpec,
+    //scalatestFunSpec,
     fragnosticI18nImpl,
     fragnosticConfBase
   ),
